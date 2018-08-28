@@ -5,9 +5,8 @@ categories = [
   { title: 'Химия' }
 ]
 
-categories.each do |c|
-  cat = Category.find_or_initialize_by(title: c[:title])
-  cat.save!
+categories.map! do |c|
+  Category.find_or_create_by!(c)
 end
 
 tests = [
@@ -22,9 +21,8 @@ tests = [
     { title: 'Металлы', level: 0, category_id: Category.find_by(title: 'Химия').id }
 ]
 
-tests.each do |t|
-  test = Test.find_or_initialize_by(title: t[:title], level: t[:level], category_id: t[:category_id])
-  test.save!
+tests.map! do |t|
+  Test.find_or_create_by!(t)
 end
 
 
@@ -44,9 +42,8 @@ questions = [
     { body: 'CuS04 - соль?', test_id: Test.find_by(title: 'Соли').id }
 ]
 
-questions.each do |q|
-  quest = Question.find_or_initialize_by(body: q[:body], test_id: q[:test_id])
-  quest.save!
+questions.map! do |q|
+  Question.find_or_create_by!(q)
 end
 
 
@@ -55,9 +52,8 @@ users = [
     { name: 'Маша' }
 ]
 
-users.each do |u|
-  user = User.find_or_initialize_by(name: u[:name])
-  user.save!
+users.map! do |u|
+  User.find_or_create_by!(u)
 end
 
 user_answers = [
@@ -71,7 +67,23 @@ user_answers = [
   { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: 'H2S04 - соляная кислота?').id, correct: false }
 ]
 
-user_answers.each do |ua|
-  user_a = UserAnswer.find_or_initialize_by(user_id: ua[:user_id], question_id: ua[:question_id])
-  user_a.save!
+user_answers.map! do |ua|
+  UserAnswer.find_or_create_by!(ua)
+end
+
+
+user_tests = [
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Сложение').id },
+  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Сложение').id },
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Умножение').id },
+  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Умножение').id },
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Извлечение квадратного корня').id },
+  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Столицы').id },
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Столицы').id },
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Горы').id },
+  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Кислоты').id }
+]
+
+user_tests.map! do |ut|
+  UserTest.find_or_create_by!(ut)
 end
