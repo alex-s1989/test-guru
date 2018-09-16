@@ -68,22 +68,22 @@ user_answers = [
 ]
 
 user_answers.map! do |ua|
-  UserAnswer.find_or_create_by!(ua)
+  UsersAnswer.find_or_create_by!(ua)
 end
 
 
 user_tests = [
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Сложение').id },
-  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Сложение').id },
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Умножение').id },
-  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Умножение').id },
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Извлечение квадратного корня').id },
-  { users_id: User.find_by(name: 'Маша').id, tests_id: Test.find_by(title: 'Столицы').id },
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Столицы').id },
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Горы').id },
-  { users_id: User.find_by(name: 'Саша').id, tests_id: Test.find_by(title: 'Кислоты').id }
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Сложение').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Сложение').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Умножение').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Умножение').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Извлечение квадратного корня').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Столицы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Столицы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Горы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Кислоты').id }
 ]
 
 user_tests.map! do |ut|
-  UserTest.find_or_create_by!(ut)
+  UsersTest.find_or_create_by!(ut)
 end
