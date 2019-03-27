@@ -9,20 +9,46 @@ categories.map! do |c|
   Category.find_or_create_by!(c)
 end
 
+users = [
+  { name: 'Саша' },
+  { name: 'Маша' }
+]
+
+users.map! do |u|
+  User.find_or_create_by!(u)
+end
+
+
 tests = [
-    { title: 'Сложение', level: 0, category_id: Category.find_by(title: 'Математика').id },
-    { title: 'Умножение', level: 0, category_id: Category.find_by(title: 'Математика').id },
-    { title: 'Извлечение квадратного корня', level: 1, category_id: Category.find_by(title: 'Математика').id },
-    { title: 'Столицы', level: 0, category_id: Category.find_by(title: 'География').id },
-    { title: 'Реки', level: 0, category_id: Category.find_by(title: 'География').id },
-    { title: 'Горы', level: 1, category_id: Category.find_by(title: 'География').id },
-    { title: 'Кислоты', level: 0, category_id: Category.find_by(title: 'Химия').id },
-    { title: 'Соли', level: 1, category_id: Category.find_by(title: 'Химия').id },
-    { title: 'Металлы', level: 0, category_id: Category.find_by(title: 'Химия').id }
+  { title: 'Сложение', level: 0, category_id: Category.find_by(title: 'Математика').id, author_id: User.find_by(name: 'Саша').id },
+  { title: 'Умножение', level: 0, category_id: Category.find_by(title: 'Математика').id, author_id: User.find_by(name: 'Саша').id },
+  { title: 'Извлечение квадратного корня', level: 1, category_id: Category.find_by(title: 'Математика').id, author_id: User.find_by(name: 'Маша').id },
+  { title: 'Столицы', level: 0, category_id: Category.find_by(title: 'География').id, author_id: User.find_by(name: 'Маша').id },
+  { title: 'Реки', level: 0, category_id: Category.find_by(title: 'География').id, author_id: User.find_by(name: 'Саша').id },
+  { title: 'Горы', level: 1, category_id: Category.find_by(title: 'География').id, author_id: User.find_by(name: 'Саша').id },
+  { title: 'Кислоты', level: 0, category_id: Category.find_by(title: 'Химия').id, author_id: User.find_by(name: 'Саша').id },
+  { title: 'Соли', level: 1, category_id: Category.find_by(title: 'Химия').id, author_id: User.find_by(name: 'Маша').id },
+  { title: 'Металлы', level: 0, category_id: Category.find_by(title: 'Химия').id, author_id: User.find_by(name: 'Маша').id }
 ]
 
 tests.map! do |t|
   Test.find_or_create_by!(t)
+end
+
+users_tests = [
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Сложение').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Сложение').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Умножение').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Умножение').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Извлечение квадратного корня').id },
+  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Столицы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Столицы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Горы').id },
+  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Кислоты').id }
+]
+
+users_tests.map! do |ut|
+  UsersTest.find_or_create_by!(ut)
 end
 
 
@@ -47,43 +73,7 @@ questions.map! do |q|
 end
 
 
-users = [
-    { name: 'Саша' },
-    { name: 'Маша' }
-]
-
-users.map! do |u|
-  User.find_or_create_by!(u)
-end
-
-user_answers = [
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: '2+2=5?').id, correct: false },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: '2+2=4?').id, correct: true },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: '5*5=25?').id, correct: true },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: '7*7=47?').id, correct: false },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: 'корень из 4 равно 2?').id, correct: true },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: 'Столица РФ - Москва?').id, correct: true },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: 'Самая высокая гора в США - Эверест?').id, correct: false },
-  { user_id: User.find_by(name: 'Саша').id, question_id: Question.find_by(body: 'H2S04 - соляная кислота?').id, correct: false }
-]
-
-user_answers.map! do |ua|
-  UsersAnswer.find_or_create_by!(ua)
-end
 
 
-user_tests = [
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Сложение').id },
-  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Сложение').id },
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Умножение').id },
-  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Умножение').id },
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Извлечение квадратного корня').id },
-  { user_id: User.find_by(name: 'Маша').id, test_id: Test.find_by(title: 'Столицы').id },
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Столицы').id },
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Горы').id },
-  { user_id: User.find_by(name: 'Саша').id, test_id: Test.find_by(title: 'Кислоты').id }
-]
 
-user_tests.map! do |ut|
-  UsersTest.find_or_create_by!(ut)
-end
+
