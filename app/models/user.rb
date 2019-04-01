@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_many :users_tests
   has_many :tests, through: :users_tests
-  has_many :author, class_name: 'Test'
+  has_many :test_author, class_name: 'Test'
   
   def test_by_level(level)
-    tests.where(tests: { level: level })
+    tests.where(level: level)
   end
 end

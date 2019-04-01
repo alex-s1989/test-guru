@@ -3,7 +3,7 @@ class Test < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :users, through: :users_tests
   belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :test_author, class_name: 'User', foreign_key: 'test_author_id'
   
   def self.by_category(category)
     Test.joins(:category)
