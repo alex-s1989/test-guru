@@ -19,15 +19,15 @@ end
 
 
 tests = [
-  { title: 'Сложение', level: 0, category_id: categories.find { |c| c.title == 'Математика' }.id, test_author_id: users.find { |u| u.name == 'Саша' }.id },
-  { title: 'Умножение', level: 0, category_id: categories.find { |c| c.title == 'Математика' }.id, test_author_id: users.find { |u| u.name == 'Саша' }.id },
-  { title: 'Извлечение квадратного корня', level: 1, category_id: categories.find { |c| c.title == 'Математика' }.id, test_author_id: users.find { |u| u.name == 'Маша' }.id },
-  { title: 'Столицы', level: 0, category_id: categories.find { |c| c.title == 'География' }.id, test_author_id: users.find { |u| u.name == 'Маша' }.id },
-  { title: 'Реки', level: 0, category_id: categories.find { |c| c.title == 'География' }.id, test_author_id: users.find { |u| u.name == 'Саша' }.id },
-  { title: 'Горы', level: 1, category_id: categories.find { |c| c.title == 'География' }.id, test_author_id: users.find { |u| u.name == 'Саша' }.id },
-  { title: 'Кислоты', level: 0, category_id: categories.find { |c| c.title == 'Химия' }.id, test_author_id: users.find { |u| u.name == 'Саша' }.id },
-  { title: 'Соли', level: 1, category_id: categories.find { |c| c.title == 'Химия' }.id, test_author_id: users.find { |u| u.name == 'Маша' }.id },
-  { title: 'Металлы', level: 0, category_id: categories.find { |c| c.title == 'Химия' }.id, test_author_id: users.find { |u| u.name == 'Маша' }.id }
+  { title: 'Сложение', level: 0, category_id: categories[0].id, author_id: users[0].id },
+  { title: 'Умножение', level: 0, category_id: categories[0].id, author_id: users[0].id },
+  { title: 'Извлечение квадратного корня', level: 1, category_id: categories[0].id, author_id: users[1].id },
+  { title: 'Столицы', level: 0, category_id: categories[1].id, author_id: users[1].id },
+  { title: 'Реки', level: 0, category_id: categories[1].id, author_id: users[0].id },
+  { title: 'Горы', level: 1, category_id: categories[1].id, author_id: users[0].id },
+  { title: 'Кислоты', level: 0, category_id: categories[2].id, author_id: users[0].id },
+  { title: 'Соли', level: 1, category_id: categories[2].id, author_id: users[1].id },
+  { title: 'Металлы', level: 0, category_id: categories[2].id, author_id: users[1].id }
 ]
 
 tests.map! do |t|
@@ -35,15 +35,15 @@ tests.map! do |t|
 end
 
 users_tests = [
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Сложение'}.id },
-  { user_id: users.find { |u| u.name == 'Маша' }.id, test_id: tests.find { |t| t.title == 'Сложение'}.id },
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Умножение'}.id },
-  { user_id: users.find { |u| u.name == 'Маша' }.id, test_id: tests.find { |t| t.title == 'Умножение'}.id },
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Извлечение квадратного корня'}.id },
-  { user_id: users.find { |u| u.name == 'Маша' }.id, test_id: tests.find { |t| t.title == 'Столицы'}.id },
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Столицы'}.id },
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Горы'}.id },
-  { user_id: users.find { |u| u.name == 'Саша' }.id, test_id: tests.find { |t| t.title == 'Кислоты'}.id }
+  { user_id: users[0].id, test_id: tests[0].id },
+  { user_id: users[1].id, test_id: tests[0].id },
+  { user_id: users[0].id, test_id: tests[1].id },
+  { user_id: users[1].id, test_id: tests[1].id },
+  { user_id: users[0].id, test_id: tests[2].id },
+  { user_id: users[1].id, test_id: tests[3].id },
+  { user_id: users[0].id, test_id: tests[3].id },
+  { user_id: users[0].id, test_id: tests[5].id },
+  { user_id: users[0].id, test_id: tests[6].id }
 ]
 
 users_tests.map! do |ut|
@@ -52,19 +52,19 @@ end
 
 
 questions = [
-    { body: '2+2=5?', test_id: tests.find { |t| t.title == 'Сложение'}.id },
-    { body: '2+2=4?', test_id: tests.find { |t| t.title == 'Сложение'}.id },
-    { body: '5*5=25?', test_id: tests.find { |t| t.title == 'Умножение'}.id },
-    { body: '7*7=47?', test_id: tests.find { |t| t.title == 'Умножение'}.id },
-    { body: 'корень из 4 равно 2?', test_id: tests.find { |t| t.title == 'Извлечение квадратного корня'}.id },
-    { body: 'корень из 16 равно 2?', test_id: tests.find { |t| t.title == 'Извлечение квадратного корня'}.id },
-    { body: 'Столица РФ - Москва?', test_id: tests.find { |t| t.title == 'Столицы'}.id },
-    { body: 'Столица РФ - Сочи?', test_id: tests.find { |t| t.title == 'Столицы'}.id },
-    { body: 'Самая длинная река в Беларуси - Амазонка?', test_id: tests.find { |t| t.title == 'Реки'}.id },
-    { body: 'Самая высокая гора в США - Эверест?', test_id: tests.find { |t| t.title == 'Горы'}.id },
-    { body: 'H2S04 - соляная кислота?', test_id: tests.find { |t| t.title == 'Кислоты'}.id },
-    { body: 'Cu - металл?', test_id: tests.find { |t| t.title == 'Металлы'}.id },
-    { body: 'CuS04 - соль?', test_id: tests.find { |t| t.title == 'Соли'}.id }
+    { body: '2+2=5?', test_id: tests[0].id },
+    { body: '2+2=4?', test_id: tests[0].id },
+    { body: '5*5=25?', test_id: tests[1].id },
+    { body: '7*7=47?', test_id: tests[1].id },
+    { body: 'корень из 4 равно 2?', test_id: tests[2].id },
+    { body: 'корень из 16 равно 2?', test_id: tests[2].id },
+    { body: 'Столица РФ - Москва?', test_id: tests[3].id },
+    { body: 'Столица РФ - Сочи?', test_id: tests[3].id },
+    { body: 'Самая длинная река в Беларуси - Амазонка?', test_id: tests[4].id },
+    { body: 'Самая высокая гора в США - Эверест?', test_id: tests[5].id },
+    { body: 'H2S04 - соляная кислота?', test_id: tests[6].id },
+    { body: 'Cu - металл?', test_id: tests[8].id },
+    { body: 'CuS04 - соль?', test_id: tests[7].id }
 ]
 
 questions.map! do |q|
