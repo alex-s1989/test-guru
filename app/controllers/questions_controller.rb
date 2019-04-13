@@ -1,39 +1,47 @@
 class QuestionsController < ApplicationController
-  
-  
-  before_action :find_test
-  before_action :find_question, only: %i[show delete]
+
+  before_action :find_test, only: %i[index create new]
+  before_action :find_question, only: %i[show destroy update edit]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    questions = @test.questions
-
-    render plain: questions.inspect
+    @questions = @test.questions
   end
 
-
   def show
-    render inline: '<%= @question.body %>'
+
   end
 
   def new
+    @question = Question.new
+  end
+
+  def edit
 
   end
 
   def create
-    question = @test.questions.new(question_params)
-    if question.save
-      render plain: question.inspect
+    @question = @test.questions.new(question_params)
+    if @question.save
+      redirect_to @question
     else
-      handle error
+      render :new
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
     end
   end
 
   def destroy
     @question.destroy
 
-    render plain: @question.inspect
+    redirect_to test_questions_path(@question.test_id)
   end
 
   private
@@ -43,15 +51,15 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = find_test.questions[params[:id].to_i]
+    @question = Question.find(params[:id])
   end
 
   def question_params
-    params.require(:question).permit(:body)
+    params.require(:question).permit(:body, :test_id)
   end
 
   def rescue_with_test_not_found
-    render plain: 'Test was not found', status: 404
+    render plain: 'resource was not found', status: 404
   end
 
 end
