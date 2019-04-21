@@ -1,5 +1,7 @@
 class TestPassage < ApplicationRecord
   
+  PASSING_PERCANTAGE = 85
+  
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', foreign_key: 'current_question_id', optional: true
@@ -20,7 +22,7 @@ class TestPassage < ApplicationRecord
   end
   
   def successful_test?
-    success_rate >= 85
+    success_rate >= PASSING_PERCANTAGE
   end
   
   def success_rate
