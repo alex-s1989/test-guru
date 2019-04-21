@@ -31,21 +31,6 @@ tests.map! do |t|
   Test.find_or_create_by!(t)
 end
 
-users_tests = [
-  { user_id: users[0].id, test_id: tests[0].id },
-  { user_id: users[1].id, test_id: tests[0].id },
-  { user_id: users[0].id, test_id: tests[1].id },
-  { user_id: users[1].id, test_id: tests[1].id },
-  { user_id: users[0].id, test_id: tests[2].id },
-  { user_id: users[1].id, test_id: tests[3].id },
-  { user_id: users[0].id, test_id: tests[4].id },
-  { user_id: users[0].id, test_id: tests[5].id }
-]
-
-users_tests.map! do |ut|
-  UsersTest.find_or_create_by!(ut)
-end
-
 
 questions = [
   { body: '2+2=?', test_id: tests[0].id },
@@ -53,7 +38,8 @@ questions = [
   { body: 'Столица РФ?', test_id: tests[2].id },
   { body: 'Самая большая река в Беларуси?', test_id: tests[3].id },
   { body: 'Что из перечисленного является кислотой?', test_id: tests[4].id },
-  { body: 'CuS04 - соль?', test_id: tests[5].id }
+  { body: 'CuS04 - соль?', test_id: tests[5].id },
+  { body: '5+5=?', test_id: tests[0].id }
 ]
 
 questions.map! do |q|
@@ -64,6 +50,8 @@ end
 answers = [
   { body: '4', question_id: questions[0].id, correct: true },
   { body: '5', question_id: questions[0].id },
+  { body: '10', question_id: questions[6].id, correct: true },
+  { body: '15', question_id: questions[6].id },
   { body: '10', question_id: questions[0].id },
   { body: '25', question_id: questions[1].id, correct: true },
   { body: '36', question_id: questions[1].id },
