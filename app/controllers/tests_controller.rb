@@ -57,7 +57,4 @@ class TestsController < ApplicationController
     params.require(:test).permit(:title, :level, :category_id)
   end
   
-  def set_user
-    @user = current_user
-  end
 end

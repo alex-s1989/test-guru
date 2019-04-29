@@ -16,11 +16,9 @@
                 method: :delete,
                 data: {confirm: "Exit. Are you sure?"} %>
     </td>
-  <% end %>
 
-  <%# if logged_in? %>
-  <% if @current_user %>
     <p class="nav user">Welcome, <b><%= current_user.name %></b> Guru </p>
+
   <% end %>
 
 </nav>
