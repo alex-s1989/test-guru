@@ -4,15 +4,15 @@
     <%= link_to 'TestGuru', root_path %>
   </h1>
 
-  <% unless logged_in? %>
-    <td><%= link_to 'SignUp', signup_path %></td>
-    <td><%= link_to 'LogIn', login_path %></td>
+  <% unless user_signed_in? %>
+    <td><%= link_to 'SignUp', new_user_registration_path %></td>
+    <td><%= link_to 'LogIn', new_user_session_path %></td>
   <% end %>
 
-  <% if logged_in? %>
+  <% if user_signed_in? %>
     <td>
     <%= link_to "Exit",
-                logout_path,
+                destroy_user_session_path,
                 method: :delete,
                 data: {confirm: "Exit. Are you sure?"} %>
     </td>
