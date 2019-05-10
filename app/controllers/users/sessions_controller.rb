@@ -6,10 +6,9 @@ class Users::SessionsController < Devise::SessionsController
     # set_flash_message!(:notice, "Привет, #{current_user.name}!")
     sign_in(resource_name, resource)
     yield resource if block_given?
-    if current_user.is_a?(Admin)
-      redirect_to admin_tests_path, notice: "Привет, #{current_user.name}!"
-    else redirect_to root_path, notice: "Привет, #{current_user.name}!"
-    end
+    path = current_user.admin? ? admin_root_path : root_path
+    redirect_to path, notice: "Привет, #{current_user.name}!"
+    
     # respond_with resource, location: after_sign_in_path_for(resource)
     
   end
