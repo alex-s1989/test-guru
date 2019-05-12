@@ -1,33 +1,87 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  helpers:
+    submit:
+      test:
+        create: "Create test"
+        update: "Update test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+    select:
+      prompt: "select category"
+
+  shared:
+    errors:
+      header:
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
+    nav:
+      welcome: "Welcome, "
+      guru: "-Guru"
+      link_exit: "Exit"
+      sure: "Exit? Are you sure?"
+
+
+  tests:
+    index:
+      header: "Tricky tests"
+      header_t: "Title"
+      header_l: "Level"
+      header_q: "Questions"
+    test:
+      start: "Start"
+
+
+  admin:
+    tests:
+      create:
+        success: "Test was successfully created."
+      update:
+        success: "Test was successfully updated."
+      destroy:
+        success: "Test %{test} was successfully deleted."
+      index:
+        header: "Tricky tests"
+        link_new_test: "New test"
+        header_t: "Title"
+        header_l: "Level"
+        header_q: "Questions"
+        header_act: "Actions"
+      test:
+        link_show: "show"
+        link_edit: "edit"
+        link_delete: "delete"
+        confirm: "Are you sure?"
+      show:
+        test_questions: "Test questions: %{test}"
+        questions:
+          one: "Created %{count} question in the test"
+          other: "Created %{count} questions in the test"
+        new_question: "New question"
+        header_q: "Questions"
+        header_act: "Actions"
+        link_back: "back"
+      new:
+        link_back: "back"
+      edit:
+        link_back: "back"
+
+    questions:
+      question:
+        link_show: "show"
+        link_edit: "edit"
+        link_delete: "delete"
+        confirm: "Are you sure?"
+
+    nav:
+      header_panel: "TestGuru admin panel"
+      welcome: "Welcome, "
+      guru: " -Guru"
+      link_exit: "logout"
+
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"
+

@@ -14,7 +14,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def new
-    @question = Question.new
+    @question = @test.questions.new
   end
 
   def edit
@@ -40,8 +40,8 @@ class Admin::QuestionsController < Admin::BaseController
 
   def destroy
     @question.destroy
-
-    redirect_to admin_test_questions_path(@question.test_id)
+    
+    redirect_to admin_test_path(@question.test_id)
   end
   
   private
