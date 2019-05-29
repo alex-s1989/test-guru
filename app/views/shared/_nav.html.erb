@@ -11,13 +11,13 @@
 
   <% if user_signed_in? %>
     <td>
-    <%= link_to "Exit",
+    <%= link_to t('.link_exit'),
                 destroy_user_session_path,
                 method: :delete,
-                data: {confirm: "Exit. Are you sure?"} %>
+                data: {confirm: t('.sure')} %>
     </td>
 
-    <p class="nav user">Welcome, <b><%= current_user.name %></b> Guru </p>
+    <p class="nav user"><%= t('.welcome')%><b><%= current_user.name %></b><%= t('.guru')%></p>
 
   <% end %>
 
