@@ -80,7 +80,7 @@ ru:
     nav:
       header_panel: "Панель администратора TestGuru"
       welcome: "Добро пожаловать, "
-      guru: "-Гуру"
+      guru: "-Гуру | "
       link_exit: "выход"
 
 

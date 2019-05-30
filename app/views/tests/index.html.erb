@@ -1,11 +1,18 @@
-<h1><%= t('.header') %></h1>
+<div class="row justify-content-center mt-3 ">
+  <div class="col-auto">
 
-<table>
-  <tr>
-    <th><%= t('.header_t') %></th>
-    <th><%= t('.header_l') %></th>
-    <th><%= t('.header_q') %></th>
-  </tr>
+    <h2 ><%= t('.header') %></h2>
 
-  <%= render @tests %>
-</table>
+      <table class="table table-sm ">
+        <thead>
+          <tr class="table-active">
+            <th scope="col"><%= t('.header_t') %></th>
+            <th scope="col"><%= t('.header_l') %></th>
+            <th scope="col"><%= t('.header_q') %></th>
+          </tr>
+        </thead>
+        <%= render @tests %>
+      </table>
+
+  </div>
+</div>
