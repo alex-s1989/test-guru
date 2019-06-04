@@ -9,7 +9,7 @@ class GistQuestionService
   def call
     @client.create_gist(gist_params)
   end
-  
+
   private
   
   def gist_params

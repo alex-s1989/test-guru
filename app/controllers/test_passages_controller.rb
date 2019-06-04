@@ -11,14 +11,15 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    @client = GistQuestionService.new(@test_passage.current_question).call
+    @gist = GistQuestionService.new(@test_passage.current_question).call
     
-    flash_options = if @client.id
-    Gist.create(gist_params)
-      { notice: (view_context.link_to t('.success'), @client.html_url).html_safe }
-    else
-      { alert: t('.failure') }
-    end
+    flash_options =
+      if @gist.id
+        Gist.create(gist_params)
+        { notice: (view_context.link_to t('.success'), @gist.html_url).html_safe }
+      else
+        { alert: t('.failure') }
+      end
     
     redirect_to @test_passage, flash_options
   end
@@ -42,7 +43,7 @@ class TestPassagesController < ApplicationController
   
   def gist_params
     { question: @test_passage.current_question,
-      gist_url: @client.html_url,
+      gist_url: @gist.html_url,
       user: current_user }
   end
   
