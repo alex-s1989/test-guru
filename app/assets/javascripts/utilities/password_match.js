@@ -9,14 +9,14 @@ function validate() {
   var password_con = document.getElementById('user_password_confirmation').value
 
 
-    if (password.length != 0) {
-        if (password == password_con) {
-            document.querySelector('.octicon-thumbsdown').classList.add('hide');
-            document.querySelector('.octicon-thumbsup').classList.remove('hide');
-        } else {
-            document.querySelector('.octicon-thumbsdown').classList.remove('hide');
-            document.querySelector('.octicon-thumbsup').classList.add('hide');
-        }
-    }
+  if (password_con.length != 0) {
 
+    if (password == password_con) {
+      document.querySelector('.octicon-thumbsdown').classList.add('hide')
+      document.querySelector('.octicon-thumbsup').classList.remove('hide')
+    } else {
+      document.querySelector('.octicon-thumbsdown').classList.remove('hide')
+      document.querySelector('.octicon-thumbsup').classList.add('hide')
+    }
+  } else document.querySelector('.octicon-thumbsdown').classList.add('hide')
 }
