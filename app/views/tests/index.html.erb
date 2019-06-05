@@ -6,9 +6,13 @@
       <table class="table table-sm ">
         <thead>
           <tr class="table-active">
-            <th scope="col"><%= t('.header_t') %></th>
-            <th scope="col"><%= t('.header_l') %></th>
-            <th scope="col"><%= t('.header_q') %></th>
+            <th class="sort-by-title pointer">
+              <%= t('.header_t') %>
+              <%= octicon "arrow-up", class: 'text-success hide' %>
+              <%= octicon "arrow-down", class: 'text-success hide' %>
+            </th>
+            <th><%= t('.header_l') %></th>
+            <th><%= t('.header_q') %></th>
           </tr>
         </thead>
         <%= render @tests %>
