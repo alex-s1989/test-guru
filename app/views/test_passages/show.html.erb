@@ -2,7 +2,7 @@
   <div class="col-auto">
 
     <div class="card-body">
-      <div class="card-header">Passing the <%= @test_passage.test.title %> Test</div>
+      <div class="card-header">Passing the "<%= @test_passage.test.title %>" test</div>
     </div>
 
     <div class="card-body">
@@ -11,6 +11,20 @@
         Total questions:<%= @test_passage.test.questions.count %>
       </div>
     </div>
+
+    <%= content_tag :div, class: "progress",
+                    data: {
+                      number_of_current_question: "#{@test_passage.number_current_question}",
+                      total_questions: "#{@test_passage.test.questions.count}"
+                    } do %>
+
+      <%= content_tag :div, class: 'progress-bar bg-success',
+                      role: "progressbar",
+                      aria_valuemin: "0",
+                      aria_valuemax: "100" do %>
+      <div id="label"> 0%</div>
+      <% end %>
+    <% end %>
 
     <div class="card">
       <div class="card-header"><b><%= @test_passage.current_question.body %></b></div>
