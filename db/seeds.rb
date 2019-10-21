@@ -10,8 +10,8 @@ categories.map! do |c|
 end
 
 users = [
-  { name: 'Иван', email: 'ivanov@gmail.com', surname: 'Иванов', type: 'Admin' },
-  # { name: 'Петр', email: 'petrov@gmail.com', surname: 'Петров', type: 'User', password: 'qqq222' }
+  { name: 'Иван', email: 'ivanov@gmail.com', surname: 'Иванов', type: 'Admin', reset_password_token: 'qqq222'  },
+  # { name: 'Петр', email: 'petrov@gmail.com', surname: 'Петров', type: 'User', reset_password_token: 'qqq222' }
 ]
 users.map! do |u|
   User.find_or_create_by!(u)
