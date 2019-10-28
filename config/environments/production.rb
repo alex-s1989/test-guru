@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'test-guru-shu.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    adsress:              'smtp.gmail.com',
+    address:              'smtp.gmail.com',
     port:                 587,
     user_name:            ENV['SMTP_USERNAME'],
     password:             ENV['SMTP_PASSWORD'],
