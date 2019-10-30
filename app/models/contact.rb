@@ -6,10 +6,9 @@ class Contact < MailForm::Base
   
   def headers
     {
-      :subject => "Contact Form",
-      :to => "shu5388369@gmail.com",
-      # :to => "#{ Admin.pluck(:email) }",
-      :from => %("#{name}" <#{email}>)
+      subject: 'Contact Form',
+      to:      "#{ Admin.pluck(:email) }",
+      from:    %("#{name}" <#{email}>)
     }
   end
 end
