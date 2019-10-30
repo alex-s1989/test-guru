@@ -36,6 +36,9 @@ gem 'devise', '~> 4.0'
 # NETWORKING
 gem 'faraday'
 
+#mail form
+gem 'mail_form', '~> 1.5', '>= 1.5.1'
+
 gem "octokit", "~> 4.0"
 
 # Environment variables
