@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 # AUTH
-gem 'devise', '~> 4.0'
+gem 'devise', '~> 4.7'
 
 # NETWORKING
 gem 'faraday'
