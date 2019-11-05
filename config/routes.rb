@@ -35,5 +35,6 @@ Rails.application.routes.draw do
     end
     resources :gists, shallow: true, only: :index
   end
-
+  
+  resources :contacts, only: %i[new create]
 end

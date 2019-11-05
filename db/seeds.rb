@@ -9,22 +9,17 @@ categories.map! do |c|
   Category.find_or_create_by!(c)
 end
 
-users = [
-  { name: 'Иван', email: 'ivanov@gmail.com', surname: 'Иванов', type: 'Admin' },
-  # { name: 'Петр', email: 'petrov@gmail.com', surname: 'Петров', type: 'User', password: 'qqq222' }
-]
-users.map! do |u|
-  User.find_or_create_by!(u)
-end
+
+user = User.last
 
 
 tests = [
-  { title: 'Сложение', level: 0, category_id: categories[0].id, author_id: users[0].id },
-  { title: 'Умножение', level: 1, category_id: categories[0].id, author_id: users[0].id },
-  { title: 'Столицы', level: 2, category_id: categories[1].id, author_id: users[0].id },
-  { title: 'Реки', level: 5, category_id: categories[1].id, author_id: users[0].id },
-  { title: 'Кислоты', level: 4, category_id: categories[2].id, author_id: users[0].id },
-  { title: 'Соли', level: 3, category_id: categories[2].id, author_id: users[0].id }
+  { title: 'Сложение', level: 0, category_id: categories[0].id, author_id: user.id },
+  { title: 'Умножение', level: 1, category_id: categories[0].id, author_id: user.id },
+  { title: 'Столицы', level: 2, category_id: categories[1].id, author_id: user.id },
+  { title: 'Реки', level: 5, category_id: categories[1].id, author_id: user.id },
+  { title: 'Кислоты', level: 4, category_id: categories[2].id, author_id: user.id },
+  { title: 'Соли', level: 3, category_id: categories[2].id, author_id: user.id }
 ]
 
 tests.map! do |t|
