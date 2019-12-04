@@ -29,6 +29,7 @@ class TestPassagesController < ApplicationController
     
     if @test_passage.complited?
       TestsMailer.completed_test(@test_passage).deliver_now
+      earned_badges.each { |b| current_user.badges << b }
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show
@@ -46,5 +47,12 @@ class TestPassagesController < ApplicationController
       gist_url: @gist.html_url,
       user: current_user }
   end
-  
+
+  def earned_badges
+    badges = []
+    badges << Badge.test_result_badge(@test_passage.success_rate)
+    badges << Badge.first_attempt_badge(@test_passage.test)
+    badges << Badge.level_badge(@test_passage.test, current_user)
+    badges.compact
+  end
 end
