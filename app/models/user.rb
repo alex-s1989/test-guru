@@ -34,14 +34,12 @@ class User < ApplicationRecord
     self.is_a?(Admin)
   end
 
-  def passed_tests_by_scope(scope)
-    tests.send(scope).select do |test|
-      test.test_passages.any? { |tp| tp.success_rate >= 80 }
-    end.uniq
+  def passed_tests_by_complexity(complexity)
+    tests.public_send(complexity).where('test_passages.score >= 80')
   end
 
-  def scope_completed?(scope)
-    passed_tests_by_scope(:easy).count == Test.send(scope).count
+  def complexity_tests_completed?(complexity)
+    passed_tests_by_complexity(complexity).uniq.count == Test.send(complexity).count
   end
 
 end
