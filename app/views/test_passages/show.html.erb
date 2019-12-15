@@ -3,6 +3,14 @@
 
     <div class="card-body">
       <div class="card-header">Passing the "<%= @test_passage.test.title %>" test</div>
+
+      <% if @test_passage.test.duration > 0 %>
+        <span id="time-end-point" class="hide"><%= @test_passage.time_end_point.to_f %></span>
+        <p align="center">
+          Time limit: <span id="duration"><%= @test_passage.test.duration %></span> min.
+          Left: <span id="timer"></span>
+        </p>
+      <% end %>
     </div>
 
     <div class="card-body">
