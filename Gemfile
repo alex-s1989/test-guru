@@ -49,7 +49,7 @@ gem 'rails-i18n', '~> 5.0.0'
 
 #UI
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '~> 4.3.1'
 gem 'octicons_helper'
 
 # Use Capistrano for deployment
