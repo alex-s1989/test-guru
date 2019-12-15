@@ -5,7 +5,8 @@
 
     <p>
       <%= link_to t('.link_new_test'), new_admin_test_path %> |
-      <%= link_to 'Gists', admin_gists_path %>
+      <%= link_to 'Gists', admin_gists_path %> |
+      <%= link_to 'Badges', admin_badges_path %>
     </p>
 
     <%= render 'shared/errors', resource: @test %>

@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <h1><%= t('.header', badge_title: @badge.title) %></h1>
+
+  <p>
+    <%= "ID: #{@badge.id} " %>
+  </p>
+  <p>
+   <%= t('.file_name', badge_file_name: @badge.file_name) %>
+  </p>
+
+  <p>
+    <%= image_tag(@badge.file_name, :alt => "badge") %>
+  </p>
+
+  <%= link_to t('.link_to_badges'), admin_badges_path %> |
+  <%= link_to t('.link_to_edit'), edit_admin_badge_path(@badge) %>
+</div>

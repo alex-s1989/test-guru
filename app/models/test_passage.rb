@@ -1,6 +1,6 @@
 class TestPassage < ApplicationRecord
   
-  PASSING_PERCANTAGE = 85
+  PASSING_PERCANTAGE = 80
   
   belongs_to :user
   belongs_to :test
@@ -12,6 +12,7 @@ class TestPassage < ApplicationRecord
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
+      self.score = success_rate
     end
     
     save!

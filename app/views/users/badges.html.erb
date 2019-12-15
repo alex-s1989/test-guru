@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <h1>Earned badges</h1>
+
+  <%= render 'shared/user_badges', user: current_user %>
+
+  <h1>All badges</h1>
+
+  <% Badge.all.each do |b| %>
+    <p><%= image_tag(b.file_name, :alt => "badge_#{b.title}")%></p>
+  <% end %>
+
+  <%= link_to '<<Tests', tests_path %>
+</div>

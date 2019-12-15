@@ -1,0 +1,26 @@
+<div class="container mt-3">
+  <h1><%= t('.header') %></h1>
+
+  <%= render 'shared/errors', resource: @badge %>
+
+  <div class="container">
+    <table class="table table-sm">
+      <thead class="thead-light">
+      <tr>
+        <th><%= t('.title') %> </th>
+        <th><%= t('.file_name') %> </th>
+        <th><%= t('.rule_name') %></th>
+        <th><%= t('.rule_value') %></th>
+        <th class="align-middle"><%= t('.badge_image') %></th>
+        <th colspan="4"><%= t('.actions')%></th>
+
+      </tr>
+      </thead>
+      <%= render @badges %>
+    </table>
+  </div>
+
+  <div class="container">
+    <%= link_to t('.new_badge'), new_admin_badge_path %><br>
+  </div>
+</div>

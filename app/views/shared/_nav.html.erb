@@ -4,6 +4,7 @@
 
     <% if user_signed_in? %>
       <%= t('.welcome')%><b><%= current_user.name %></b><%= t('.guru')%>
+      <%= link_to 'badges', badges_user_path(current_user) %> |
       <% if current_user.admin? %>
             <%= link_to "Admin Panel", admin_tests_path %> |
           <% end %>

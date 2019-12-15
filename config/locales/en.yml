@@ -89,6 +89,35 @@ en:
       guru: " -Guru"
       link_exit: "logout"
 
+    badges:
+      index:
+        header: "Badges Collection"
+        title: "Title"
+        file_name: "File"
+        rule: "Rule"
+        badge_image: "Picture"
+        actions: "Actions"
+        new_badge: "New badge"
+      new:
+        header: "Create new badge"
+        link_to_badges: "<<Badges"
+      create:
+        success: "Badge successfully created"
+      form:
+        link_to_badges: "<<Badges"
+      edit:
+        header: "Edit badge '%{badge_title}'"
+        link_to_badge: "Show badge"
+      update:
+        success: "Badge successfully updated"
+      show:
+        header: "Badge: %{badge_title}"
+        file_name: "File of image: %{badge_file_name}"
+        link_to_badges: "<<Badges"
+        link_to_edit: "Edit"
+      destroy:
+        success: "Badge successfully deleted"
+
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
