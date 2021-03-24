@@ -125,7 +125,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.6)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.12.2)
@@ -145,7 +145,7 @@ GEM
     pg (1.1.4)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.6)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -258,7 +258,7 @@ DEPENDENCIES
   octicons_helper
   octokit (~> 4.0)
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.1.rc1)
   rails-i18n (~> 5.0.0)
   sass-rails (~> 5.0)
