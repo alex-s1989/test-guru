@@ -19,7 +19,7 @@ class TestPassage < ApplicationRecord
   end
   
   def complited?
-    current_question.nil?
+    current_question.nil? || time_out?
   end
   
   def successful_test?
@@ -30,6 +30,13 @@ class TestPassage < ApplicationRecord
     correct_questions.to_f / test.questions.count.to_f * 100
   end
   
+  def time_out?
+    (Time.current - created_at) / 60 >= test.duration if test.duration > 0
+  end
+
+  def time_end_point
+    created_at + test.duration * 60
+  end
   def number_current_question
     test.questions.order(:id).where('id < ?', (current_question.id) + 1).count
   end
